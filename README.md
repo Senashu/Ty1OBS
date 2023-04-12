@@ -40,5 +40,9 @@ pip install psutil appdirs pymem
 
 You can customize the TE value by passing a different value to the `start()` method. For example, to set the TE value to 72, use:
 ```python
-ty_reader.start(te_value=72)
+FILENAME can be changed to 'Game 1', 'Game 2', 'Game 3'.
+TE_VALUE can be changed to 34 for Any%. #default 72 for 100%
+COG_VALUE representing the maximum Cogs of the Level.
+BILBY_VALUE representing the maximum Bilby of the Level.
+OPAL_VALUE representing the maximum Opals of the Level, which can be turn in to a Opal machine for a TE reward.
 ```
