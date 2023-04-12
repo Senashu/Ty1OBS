@@ -13,7 +13,7 @@ else:
     print("Invalid game choice entered.")
     exit()
 
-
+    
 class TyReader:
     def __init__(self):
         self.mem = None
@@ -81,3 +81,4 @@ class TyReader:
 if __name__ == '__main__':
     ty_reader = TyReader()
     ty_reader.start(te_value=72)  # 100% = 72, Any% = 34
+    
