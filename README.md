@@ -26,14 +26,14 @@ pip install psutil appdirs pymem
 1. Open "Ty" or "Mul-ty-player" and minimize it
 2. Run the script. ( If it closes, it means PIP is not installed.)
 2. The script will create a Folder called "TyOBS" in %LocalAppData%. (Type in the Explorer Address Bar %LocalAppData% to locate it)
-3. There you'll find the "TyOBS" Folder
-4. Open OBS and go to Tools ->python settings ->add "C:\Users\*****\AppData\Local\Programs\Python\Python310"
-5. Go back to Scripts and add script main.py
-6. Now you can add a source called "Text (GDI+)" and name it, for example "TE_Text".
-7. Right-click on "TE_Text" and select "Properties".
-8. Choose "Read from file".
-9. Browse for "TE.txt". The script will create the file where you opened it.
-10. Repeat it for the other called Cog.txt, Opal.txt, TE.txt
+3. There, you will find the "TyOBS" folder.
+4. Open OBS and go to Tools -> Scripts-> Now add main.py to "Loaded Scripts" by pressing "+"
+5. After that you go to -> Python Settings ->click Browse and search for -> "C:\Users\*****\AppData\Local\Programs\Python\Python310"
+7. Now you can add a source called "Text (GDI+)" and name it, for example "TE_Text".
+8. Right-click on "TE_Text" and select "Properties".
+9. Choose "Read from file".
+10. Browse for "TE.txt". The script will create the file where you opened it.
+11. Repeat it for the other called Cog.txt, Opal.txt, TE.txt
 
 
 ## Customization
