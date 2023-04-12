@@ -26,6 +26,10 @@ pip install pymem
 python main.py
 ```
 3. The script will start reading the memory values and writing them to text files (Cog.txt, Bilby.txt, Opal.txt, and TE.txt).
+4. Open OBS and add a source called "Text (GDI+)" and name it, for example, "TE_Text".
+5. Right-click on "TE_Text" and select "Properties".
+6. Choose "Read from file".
+7. Browse for "TE.txt". The script will create the file where you opened it.
 
 ## Customization
 
