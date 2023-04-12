@@ -27,13 +27,14 @@ pip install psutil
 python main.py
 ```
 3. The script will start reading the memory values and writing them to text files.
-4. Open OBS and go to Tools ->python settings ->add "C:\Users\*****\AppData\Local\Programs\Python\Python310"
-5. Go back to Scripts and add script main.py
-6. Now you can add a source called "Text (GDI+)" and name it, for example, "TE_Text".
-7. Right-click on "TE_Text" and select "Properties".
-8. Choose "Read from file".
-9. Browse for "TE.txt". The script will create the file where you opened it.
-10. Customize it
+4. Copy main.py, Bilby.txt,Cog.txt,Opal.txt and TE.txt into "C:\Program Files\obs-studio\data\obs-plugins\frontend-tools\scripts"
+5. Open OBS and go to Tools ->python settings ->add "C:\Users\*****\AppData\Local\Programs\Python\Python310"
+6. Go back to Scripts and add script main.py
+7. Now you can add a source called "Text (GDI+)" and name it, for example, "TE_Text".
+8. Right-click on "TE_Text" and select "Properties".
+9. Choose "Read from file".
+10. Browse for "TE.txt". The script will create the file where you opened it.
+11. Customize it
 
 ## Customization
 
