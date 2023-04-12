@@ -51,3 +51,7 @@ COG_VALUE representing the maximum Cogs of the Level.
 BILBY_VALUE representing the maximum Bilby of the Level.
 OPAL_VALUE representing the maximum Opals of the Level, which can be turn in to a Opal machine for a TE reward.
 ```
+
+## Example
+
+![Screenshot_8](https://user-images.githubusercontent.com/118660067/231568927-e144d960-3393-4e02-a653-fcd0c5b43359.png)
