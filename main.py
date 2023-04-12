@@ -11,16 +11,7 @@ for proc in psutil.process_iter(['name']):
     elif proc.info['name'] == 'Mul-Ty-Player.exe':
         exe_name = 'Mul-Ty-Player.exe'
         break
-else:
-    # If neither game is running, prompt the user to choose
-    game_choice = input("Enter '1' for TY and '2' for Mul-Ty-Player: ")
-    if game_choice == "1":
-        exe_name = "TY.exe"
-    elif game_choice == "2":
-        exe_name = "Mul-Ty-Player.exe"
-    else:
-        print("Invalid game choice entered.")
-        exit()
+
 
 steampath = r'C:\Program Files (x86)\Steam\userdata'
 game_id = '411960'
@@ -77,7 +68,6 @@ class TyReader:
             with open("Opal.txt", "w+") as f:
                 f.write(f"{opals}/300\n")
                 f.flush()
-                print(TE)
                 time.sleep(0.01)
 
             with open("Cog.txt", "w+") as f:
