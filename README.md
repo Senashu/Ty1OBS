@@ -36,6 +36,7 @@ pip install psutil appdirs pymem
 11. Repeat it for the other called Cog.txt, Opal.txt, TE.txt
 
 Optimal: Use provided pngs for a beauty Overlay ;)
+Best Font: SF-Slapstick-Comic
 
 
 ## Customization
