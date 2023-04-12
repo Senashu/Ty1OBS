@@ -5,7 +5,7 @@ import appdirs
 from pymem import Pymem
 from pymem.process import module_from_name
 
-print('Ty Collectibles for OBS')
+
 STEAM_PATH = r'C:\Program Files (x86)\Steam\userdata'
 GAME_ID = '411960'
 APPDATA_PATH = os.path.join(appdirs.user_data_dir(''), 'TyOBS')
@@ -37,7 +37,7 @@ def find_game_directory():
             return directory
 
 
-class TyReader:
+class TyOBS:
     def __init__(self):
         self.mem = None
         self.module = None
@@ -93,6 +93,6 @@ class TyReader:
 
 
 if __name__ == '__main__':
-    ty_reader = TyReader()
-    ty_reader.start()
-    
+    tyobs = TyOBS()
+    tyobs.start()
+
