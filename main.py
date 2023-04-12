@@ -5,6 +5,7 @@ import appdirs
 from pymem import Pymem
 from pymem.process import module_from_name
 
+print('TyOBS Collectables Displayer v1.0.0')
 
 STEAM_PATH = r'C:\Program Files (x86)\Steam\userdata'
 GAME_ID = '411960'
@@ -95,4 +96,3 @@ class TyOBS:
 if __name__ == '__main__':
     tyobs = TyOBS()
     tyobs.start()
-
