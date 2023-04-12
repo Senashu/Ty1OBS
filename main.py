@@ -1,6 +1,5 @@
 import os
 import time
-
 from pymem import Pymem
 from pymem.process import module_from_name
 
