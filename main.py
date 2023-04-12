@@ -19,8 +19,7 @@ game_id = '411960'
 for steam_id in os.listdir(steampath):
     directory = os.path.join(steampath, steam_id, game_id, 'remote')
     if os.path.exists(directory):
-        print(f"Using Steam account {steam_id}")
-        print(f"Selected directory: {directory}")
+        print(f"Path to Game2 through SteamID:{steam_id}")
         break
 else:
     print(f"Error: no Steam accounts found with game ID {game_id}")
@@ -48,8 +47,10 @@ class TyReader:
     def update_values(self, te_value=72):
         while True:
             while not self.open_process():
-                print("Game process not found. Waiting for it to start...")
-                time.sleep(5)
+                print("\nTY.exe or Mul-ty-player.exe not found.")
+                print("Waiting for it to start...")
+                print("If you swapped between version, please restart this script\n")
+                time.sleep(10)
 
             filename = 'Game 2'
             file_path = os.path.join(directory, filename)
@@ -68,7 +69,7 @@ class TyReader:
             with open("Opal.txt", "w+") as f:
                 f.write(f"{opals}/300\n")
                 f.flush()
-                time.sleep(0.01)
+                time.sleep(0.1)
 
             with open("Cog.txt", "w+") as f:
                 f.write(f"{Cogs}/10\n")
