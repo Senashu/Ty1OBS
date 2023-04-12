@@ -1,17 +1,26 @@
 import os
 import time
+import psutil
 from pymem import Pymem
 from pymem.process import module_from_name
 
-game_choice = input("Enter '1' for TY and '2' for Mul-Ty-Player: ")
-
-if game_choice == "1":
-    exe_name = "TY.exe"
-elif game_choice == "2":
-    exe_name = "Mul-Ty-Player.exe"
+for proc in psutil.process_iter(['name']):
+    if proc.info['name'] == 'TY.exe':
+        exe_name = 'TY.exe'
+        break
+    elif proc.info['name'] == 'Mul-Ty-Player.exe':
+        exe_name = 'Mul-Ty-Player.exe'
+        break
 else:
-    print("Invalid game choice entered.")
-    exit()
+    # If neither game is running, prompt the user to choose
+    game_choice = input("Enter '1' for TY and '2' for Mul-Ty-Player: ")
+    if game_choice == "1":
+        exe_name = "TY.exe"
+    elif game_choice == "2":
+        exe_name = "Mul-Ty-Player.exe"
+    else:
+        print("Invalid game choice entered.")
+        exit()
 
 steampath = r'C:\Program Files (x86)\Steam\userdata'
 game_id = '411960'
@@ -24,8 +33,6 @@ for steam_id in os.listdir(steampath):
         break
 else:
     print(f"Error: no Steam accounts found with game ID {game_id}")
-
-
 
 
 class TyReader:
