@@ -1,5 +1,3 @@
-Sure, here is a sample readme for the given code:
-
 # Ty1 Collectables for OBS
 
 Ty1 Collectables is a Python script that reads memory values from the "Mul-Ty-Player.exe" game and writes them to text files. The values that are read include the number of Cogs, Bilbies, Opals, and TE that the player has collected in the game. 
