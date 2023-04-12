@@ -16,6 +16,7 @@ To run this script, you will need:
 1. Install the required packages:
 ```sh
 pip install pymem
+pip install psutil
 ```
 
 ## Usage
