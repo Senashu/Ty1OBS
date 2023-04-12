@@ -8,7 +8,8 @@ Ty1 Collectables is a Python script that reads memory values from the Game "TY.e
 
 To run this script, you will need:
 * Python 3.x
-* Pymem library
+* Pymem and Psutil library
+* 
 
 ### Installation
 
