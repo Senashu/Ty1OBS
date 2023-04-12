@@ -19,7 +19,7 @@ To run this script, you will need:
 ```sh
 pip install psutil appdirs pymem
 ```
-4.Paste the code in the cmd and press Enter
+4. Paste the code in the cmd and press Enter
 
 ## Usage
  
