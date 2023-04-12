@@ -23,7 +23,7 @@ pip install pymem
 1. Open the game "Mul-Ty-Player.exe".
 2. Run the script:
 ```sh
-python TyReader.py
+python main.py
 ```
 3. The script will start reading the memory values and writing them to text files (Cog.txt, Bilby.txt, Opal.txt, and TE.txt).
 
