@@ -31,6 +31,7 @@ python main.py
 5. Right-click on "TE_Text" and select "Properties".
 6. Choose "Read from file".
 7. Browse for "TE.txt". The script will create the file where you opened it.
+8. Customize it
 
 ## Customization
 
