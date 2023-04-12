@@ -3,7 +3,7 @@ import time
 from pymem import Pymem
 from pymem.process import module_from_name
 
-game_choice = input("Enter 1 for TY or 2 for Mul-Ty-Player: ")
+game_choice = input("Enter '1' for TY and '2' for Mul-Ty-Player: ")
 
 if game_choice == "1":
     exe_name = "TY.exe"
@@ -13,7 +13,21 @@ else:
     print("Invalid game choice entered.")
     exit()
 
-    
+steampath = r'C:\Program Files (x86)\Steam\userdata'
+game_id = '411960'
+
+for steam_id in os.listdir(steampath):
+    directory = os.path.join(steampath, steam_id, game_id, 'remote')
+    if os.path.exists(directory):
+        print(f"Using Steam account {steam_id}")
+        print(f"Selected directory: {directory}")
+        break
+else:
+    print(f"Error: no Steam accounts found with game ID {game_id}")
+
+
+
+
 class TyReader:
     def __init__(self):
         self.mem = None
@@ -39,7 +53,6 @@ class TyReader:
                 print("Game process not found. Waiting for it to start...")
                 time.sleep(5)
 
-            directory = r'C:\Program Files (x86)\Steam\userdata\80222993\411960\remote'
             filename = 'Game 2'
             file_path = os.path.join(directory, filename)
             with open(file_path, 'rb') as f:
@@ -57,6 +70,7 @@ class TyReader:
             with open("Opal.txt", "w+") as f:
                 f.write(f"{opals}/300\n")
                 f.flush()
+                print(TE)
                 time.sleep(0.01)
 
             with open("Cog.txt", "w+") as f:
@@ -81,4 +95,3 @@ class TyReader:
 if __name__ == '__main__':
     ty_reader = TyReader()
     ty_reader.start(te_value=72)  # 100% = 72, Any% = 34
-    
