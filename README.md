@@ -13,19 +13,19 @@ To run this script, you will need:
 ### Installation
 
 
-1. Install the required packages:
+1. Press Windows + r:
+2. Type cmd
+3. Copy the code below
 ```sh
 pip install psutil appdirs pymem
 ```
+4.Paste the code in the cmd and press Enter
 
 ## Usage
  
 1. Open "Ty" or "Mul-ty-player" and minimize it
-2. Run the script in an empty folder:
-```sh
-python main.py
-```
-2. The script will create a Folder called "TyOBS" in %appdata%. Type in the Explorer Address Bar %LocalAppData%
+2. Run the script. ( If it closes, it means PIP is not installed.)
+2. The script will create a Folder called "TyOBS" in %LocalAppData%. (Type in the Explorer Address Bar %LocalAppData% to locate it)
 3. There you'll find the "TyOBS" Folder
 4. Open OBS and go to Tools ->python settings ->add "C:\Users\*****\AppData\Local\Programs\Python\Python310"
 5. Go back to Scripts and add script main.py
