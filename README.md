@@ -38,7 +38,9 @@ pip install psutil appdirs pymem
 
 ## Customization
 
-You can customize the TE value by passing a different value to the `start()` method. For example, to set the TE value to 72, use:
+You can customize value by passing a different value after `=`. For example, to set the TE value to 69, use:
+
+```TE_VALUE = 72```
 ```python
 FILENAME can be changed to 'Game 1', 'Game 2', 'Game 3'.
 TE_VALUE can be changed to 34 for Any%. #default 72 for 100%
