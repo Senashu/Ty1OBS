@@ -30,6 +30,11 @@ class TyReader:
             bilby = self.mem.read_int(self.bilby)
             opals = self.mem.read_int(self.opals)
 
+            with open("Opal.txt", "w+") as f:
+                f.write(f"{opals}/300\n")
+                f.flush()
+                time.sleep(0.01)
+
             with open("Cog.txt", "w+") as f:
                 f.write(f"{Cogs}/10\n")
                 f.flush()
@@ -40,17 +45,10 @@ class TyReader:
                 f.flush()
                 time.sleep(0.2)
 
-            with open("Opal.txt", "w+") as f:
-                f.write(f"{opals}/300\n")
-                f.flush()
-                time.sleep(0.01)
-
             with open("TE.txt", "w+") as f:
                 f.write(f"{TE}/{te_value}\n")
                 f.flush()
                 time.sleep(0.2)
-
-            time.sleep(0.1)
 
     def start(self, te_value=72):
         self.update_values(te_value)
