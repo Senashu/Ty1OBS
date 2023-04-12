@@ -35,7 +35,7 @@ pip install psutil appdirs pymem
 10. Browse for "TE.txt". The script will create the file where you opened it.
 11. Repeat it for the other called Cog.txt, Opal.txt, TE.txt
 
-Optimal: Use provided pngs for a beauty Overlay ;)
+* Optimal: Use provided pngs for a beauty Overlay ;)
 * Best Font: SF-Slapstick-Comic
 
 
