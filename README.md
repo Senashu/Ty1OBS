@@ -40,7 +40,7 @@ pip install psutil appdirs pymem
 
 You can customize value by passing a different value after `=`. For example, to set the TE value to 69, use:
 
-```TE_VALUE = 72```
+```TE_VALUE = 69```
 ```python
 FILENAME can be changed to 'Game 1', 'Game 2', 'Game 3'.
 TE_VALUE can be changed to 34 for Any%. #default 72 for 100%
