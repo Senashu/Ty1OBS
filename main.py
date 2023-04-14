@@ -1,22 +1,11 @@
-import os
 import time
 import psutil
-import appdirs
 from pymem import Pymem
 from pymem.process import module_from_name
+from config import *
 
-print('TyOBS Collectables Displayer v1.0.0')
-
-STEAM_PATH = r'C:\Program Files (x86)\Steam\userdata'
-GAME_ID = '411960'
-APPDATA_PATH = os.path.join(appdirs.user_data_dir(''), 'TyOBS')
-FILENAME = 'Game 2'
-TE_VALUE = 72
-COG_VALUE = 10
-BILBY_VALUE = 5
-OPAL_VALUE = 300
-EXE_NAMES = {'TY.exe', 'Mul-Ty-Player.exe'}
-COGS_OFFSET, BILBY_OFFSET, OPALS_OFFSET = 0x265260, 0x2651AC, 0x2888B0
+print('TyOBS Collectables Displayer v1.1.0')
+print('by Buzchy')
 
 
 def find_executable():
@@ -27,8 +16,8 @@ def find_executable():
             elif proc.info['name'] == 'Mul-Ty-Player.exe':
                 return 'Mul-Ty-Player.exe'
 
-        print("Executable not found. Waiting for it to start...")
-        time.sleep(10)
+        print("\nWaiting TY/MTP.exe to start")
+        time.sleep(30)
 
 
 def find_game_directory():
@@ -52,6 +41,7 @@ class TyOBS:
             exe_name = find_executable()
             if exe_name is None:
                 return False
+
             self.mem = Pymem(exe_name)
             self.module = module_from_name(self.mem.process_handle, exe_name).lpBaseOfDll
             self.cogs, self.bilby, self.opals = map(lambda x: self.module + x,
@@ -66,31 +56,60 @@ class TyOBS:
                 print("\nExecutable not found. Waiting for it to start...")
                 time.sleep(10)
 
+            bilby = self.mem.read_int(self.bilby)
+            opals = self.mem.read_int(self.opals)
+
             file_path = os.path.join(find_game_directory(), FILENAME)
             with open(file_path, 'rb') as f:
                 hex_str = ' '.join([f'0x{x:02x}' for x in f.read()])
                 TE = int(hex_str.split()[13][2:], 16)
 
-            cogs = self.mem.read_int(self.cogs)
-            bilby = self.mem.read_int(self.bilby)
-            opals = self.mem.read_int(self.opals)
-
-            os.makedirs(self.appdata_path, exist_ok=True)
-            with open(os.path.join(self.appdata_path, "Opal.txt"), "w+") as f:
-                f.write(f"{opals}/{OPAL_VALUE}\n")
-            with open(os.path.join(self.appdata_path, "Cog.txt"), "w+") as f:
-                f.write(f"{cogs}/{COG_VALUE}\n")
-            with open(os.path.join(self.appdata_path, "Bilby.txt"), "w+") as f:
-                f.write(f"{bilby}/{BILBY_VALUE}\n")
             with open(os.path.join(self.appdata_path, "TE.txt"), "w+") as f:
                 f.write(f"{TE}/{TE_VALUE}\n")
 
-            time.sleep(0.2)
-            if not psutil.pid_exists(self.mem.process_id):
-                break
+            file_path = os.path.join(find_game_directory(), FILENAME)
+            with open(file_path, 'rb') as f:
+                offsets = ['00000200', '00000270', '000002E0', '000003C0', '00000430', '000004A0', '00000580',
+                           '000005F0', '00000660']
+                cogs = 0
+                for offset in offsets:
+                    f.seek(int(offset, 16))
+                    count = f.read(10).count(b'\x01')
+                    cogs += count
+                cogs_str = f"{cogs}/{COG_VALUE}\n"
+
+                file_path = os.path.join(find_game_directory(), FILENAME)
+                with open(file_path, 'rb') as f:
+                    offsets1 = ['00000200', '00000270', '000002E0', '000003C0', '00000430', '000004A0', '00000580',
+                                '000005F0', '00000660']
+                    offsets2 = ['000001F0', '00000260', '000002D0', '000003B0', '00000420', '00000490', '00000570',
+                                '000005E0', '00000650']
+
+                    bilbies = 0
+                    for offset in offsets1:
+                        f.seek(int(offset, 16))
+                        count1 = f.read(16)[10:16].count(b'\x01')
+                        bilbies += count1
+                    for offset in offsets2:  # added new loop here
+                        f.seek(int(offset, 16))
+                        count2 = f.read(10)[9:10].count(b'\x01')
+                        if count2:
+                            bilbies += count2
+                    bilby_str = f"{bilbies}/{BILBY_VALUE}\n"
+
+            with open(os.path.join(self.appdata_path, "Cog.txt"), "w+") as f:
+                f.write(cogs_str)
+            with open(os.path.join(self.appdata_path, "Bilby.txt"), "w+") as g:
+                g.write(bilby_str)
+
+            with open(os.path.join(self.appdata_path, "Opal.txt"), "w+") as f:
+                f.write(f"{opals}/{OPAL_VALUE}\n")
+
+            time.sleep(0.15)
 
     def start(self):
         self.update_values()
+        print("Executable found:", psutil.process_iter(['name']))
 
 
 if __name__ == '__main__':
