@@ -104,7 +104,6 @@ class TyOBS:
 
             with open(os.path.join(self.appdata_path, "Opal.txt"), "w+") as f:
                 f.write(f"{opals}/{OPAL_VALUE}\n")
-
             time.sleep(0.15)
 
     def start(self):
