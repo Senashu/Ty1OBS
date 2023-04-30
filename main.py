@@ -4,7 +4,7 @@ from pymem import Pymem
 from pymem.process import module_from_name
 from config import *
 
-print('TyOBS Collectables Displayer v1.1.0')
+print('TyOBS Collectables Displayer v1.1.1')
 print('by Buzchy')
 
 
@@ -56,7 +56,6 @@ class TyOBS:
                 print("\nExecutable not found. Waiting for it to start...")
                 time.sleep(10)
 
-            bilby = self.mem.read_int(self.bilby)
             opals = self.mem.read_int(self.opals)
 
             file_path = os.path.join(find_game_directory(), FILENAME)
@@ -88,13 +87,13 @@ class TyOBS:
                     bilbies = 0
                     for offset in offsets1:
                         f.seek(int(offset, 16))
-                        count1 = f.read(16)[10:16].count(b'\x01')
+                        count1 = f.read(16)[9:16].count(b'\x01')
                         bilbies += count1
-                    for offset in offsets2:  # added new loop here
+                    for offset in offsets2:
                         f.seek(int(offset, 16))
-                        count2 = f.read(10)[9:10].count(b'\x01')
-                        if count2:
-                            bilbies += count2
+                        count2 = f.read(16)[9:16].count(b'\x01') + f.read(16)[9:16].count(b'\x03')
+                        count2 -= 1 if count2 > 0 else 0
+                        bilbies += count2
                     bilby_str = f"{bilbies}/{BILBY_VALUE}\n"
 
             with open(os.path.join(self.appdata_path, "Cog.txt"), "w+") as f:
